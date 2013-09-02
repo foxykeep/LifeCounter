@@ -1,9 +1,15 @@
 package com.foxykeep.lifecounter;
 
+import com.foxykeep.lifecounter.util.PlatformVersion;
+
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,6 +73,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindViews() {
+        setBackground();
+
         // Player 1 views
         findViewById(R.id.player1_life_add).setOnClickListener(this);
         findViewById(R.id.player1_life_remove).setOnClickListener(this);
@@ -89,6 +97,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.player2_poison_add).setOnClickListener(this);
         findViewById(R.id.player2_poison_remove).setOnClickListener(this);
         mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void setBackground() {
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TR_BL,
+                new int[] {Color.rgb(220, 20, 20), Color.rgb(0, 146, 69)});
+        if (PlatformVersion.isAtLeastJellyBean()) {
+            findViewById(R.id.root_container).setBackground(gd);
+        } else {
+            findViewById(R.id.root_container).setBackgroundDrawable(gd);
+        }
     }
 
     private void populateViews() {

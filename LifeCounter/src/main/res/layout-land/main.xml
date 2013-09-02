@@ -1,16 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/root_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@color/background"
     android:paddingTop="44dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="32dp"
     tools:context=".MainActivity"
-    tools:ignore="ContentDescription">
+    tools:ignore="ContentDescription"
+    android:baselineAligned="false">
 
     <!-- Player 1 views -->
     <FrameLayout
