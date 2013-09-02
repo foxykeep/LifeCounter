@@ -1,0 +1,7 @@
+bin
+gen
+.settings
+.idea
+.gradle
+Thumbs.db
+build
