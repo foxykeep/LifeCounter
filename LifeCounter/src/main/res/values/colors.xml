@@ -8,4 +8,9 @@
     <!-- MainActivity colors -->
     <color name="main_divider">#FFDDDDDD</color>
 
+    <!-- SettingsActivity colors -->
+    <color name="settings_header_text_color">#FF999999</color>
+    <color name="settings_item_text_color">#FF222222</color>
+    <color name="settings_item_divider">#19000000</color>
+
 </resources>

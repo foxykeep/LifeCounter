@@ -36,5 +36,42 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="SettingsHeader" parent="android:Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">30dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:textColor">@color/settings_header_text_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="SettingsItem" parent="android:Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">49dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:background">@drawable/highlight_overlay</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/settings_item_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SettingsLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">49dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:background">@drawable/highlight_overlay</item>
+    </style>
+
+    <style name="SettingsLinearLayoutTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/settings_item_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
 </resources>

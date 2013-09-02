@@ -17,9 +17,10 @@
 
     <string name="settings_title">Settings</string>
     <string name="settings_header_background">BACKGROUND</string>
-    <string name="settings_item_single_color">Single Color</string>
-    <string name="settings_item_second_color">Second Color (fade)</string>
-    <string name="settings_header_layout">Second Color (fade)</string>
+    <string name="settings_item_background_color">Background color</string>
+    <string name="settings_header_points">POINTS</string>
     <string name="settings_item_flip_counter">Flip counter</string>
+    <string name="settings_item_poison_counters">Show poison counters</string>
+    <string name="settings_item_starting_life">Starting life</string>
 
 </resources>

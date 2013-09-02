@@ -5,4 +5,8 @@
     <dimen name="main_player_life_text_size">90sp</dimen>
     <dimen name="main_player_poison_text_size">50sp</dimen>
 
+    <!-- SettingsActivity dimens -->
+    <dimen name="settings_header_underline_thickness">2dp</dimen>
+    <dimen name="settings_item_underline_thickness">1dp</dimen>
+
 </resources>
