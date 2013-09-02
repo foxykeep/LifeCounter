@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 Google Inc.  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/ic_arrow_white_down"
+        android:bottom="30dp"/>
+
+    <item
+        android:drawable="@drawable/highlight_overlay" />
+
+</layer-list>

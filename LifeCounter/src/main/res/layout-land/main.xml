@@ -24,21 +24,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
+            <View
                 android:id="@+id/player1_life_add"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_add" />
+                android:background="@drawable/ic_arrow_white_up_overlay" />
 
-            <ImageView
+            <View
                 android:id="@+id/player1_life_remove"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_remove" />
+                android:background="@drawable/ic_arrow_white_down_overlay" />
 
         </LinearLayout>
 
@@ -64,21 +64,21 @@
             android:paddingTop="30dp"
             android:paddingBottom="30dp">
 
-            <ImageView
+            <View
                 android:id="@+id/player1_poison_add"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_add" />
+                android:background="@drawable/ic_arrow_white_up_overlay" />
 
-            <ImageView
+            <View
                 android:id="@+id/player1_poison_remove"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_remove" />
+                android:background="@drawable/ic_arrow_white_down_overlay" />
 
         </LinearLayout>
 
@@ -110,7 +110,8 @@
             android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_reset" />
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_reset" />
 
     </LinearLayout>
 
@@ -126,21 +127,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
+            <View
                 android:id="@+id/player2_life_add"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_add" />
+                android:background="@drawable/ic_arrow_white_up_overlay" />
 
-            <ImageView
+            <View
                 android:id="@+id/player2_life_remove"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_remove" />
+                android:background="@drawable/ic_arrow_white_down_overlay" />
 
         </LinearLayout>
 
@@ -166,21 +167,21 @@
             android:paddingTop="30dp"
             android:paddingBottom="30dp">
 
-            <ImageView
+            <View
                 android:id="@+id/player2_poison_add"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_add" />
+                android:background="@drawable/ic_arrow_white_up_overlay" />
 
-            <ImageView
+            <View
                 android:id="@+id/player2_poison_remove"
                 style="@style/PlayerLifeButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:src="@drawable/button_remove" />
+                android:background="@drawable/ic_arrow_white_down_overlay" />
 
         </LinearLayout>
 
