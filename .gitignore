@@ -3,5 +3,6 @@ gen
 .settings
 .idea
 .gradle
+.DS_Store
 Thumbs.db
 build
