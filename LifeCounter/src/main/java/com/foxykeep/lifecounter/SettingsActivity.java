@@ -2,6 +2,7 @@ package com.foxykeep.lifecounter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Switch;
 
@@ -14,6 +15,8 @@ public final class SettingsActivity extends Activity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         bindViews();
     }
@@ -41,6 +44,17 @@ public final class SettingsActivity extends Activity implements View.OnClickList
                 break;
             case R.id.item_starting_life:
                 break;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
