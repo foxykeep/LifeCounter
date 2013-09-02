@@ -1,105 +1,215 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/root_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background"
     android:paddingTop="60dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     tools:context=".MainActivity"
-    tools:ignore="ContentDescription">
+    tools:ignore="ContentDescription,NestedWeights">
 
     <!-- Player 1 views -->
     <LinearLayout
         android:id="@+id/player1_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/divider"
-        android:orientation="vertical">
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
-        <ImageView
-            android:id="@+id/player1_add"
-            style="@style/PlayerLifeButton"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/button_add" />
+        <FrameLayout
+            android:id="@+id/player1_life_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
 
-        <ImageView
-            android:id="@+id/player1_remove"
-            style="@style/PlayerLifeButton"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/button_remove" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/player1_life_add"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_add" />
+
+                <ImageView
+                    android:id="@+id/player1_life_remove"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_remove" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/player1_life"
+                style="@style/PlayerLifeText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/player1_poison_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp">
+
+                <ImageView
+                    android:id="@+id/player1_poison_add"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_add" />
+
+                <ImageView
+                    android:id="@+id/player1_poison_remove"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_remove" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/player1_poison"
+                style="@style/PlayerPoisonText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/player1_life"
-        style="@style/PlayerLifeText"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignTop="@+id/player1_container"
-        android:layout_alignBottom="@+id/player1_container" />
-
     <!-- Divider -->
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/reset"
-        android:layout_centerVertical="true"
-        android:background="@color/main_divider"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp" />
-
-    <ImageView
-        android:id="@+id/reset"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_action_reset" />
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/main_divider"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp" />
+
+        <ImageView
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_reset" />
+
+    </LinearLayout>
 
     <!-- Player 2 views -->
     <LinearLayout
         android:id="@+id/player2_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@+id/divider"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
-        <ImageView
-            android:id="@+id/player2_add"
-            style="@style/PlayerLifeButton"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/button_add" />
+        <FrameLayout
+            android:id="@+id/player2_life_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
 
-        <ImageView
-            android:id="@+id/player2_remove"
-            style="@style/PlayerLifeButton"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/button_remove" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/player2_life_add"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_add" />
+
+                <ImageView
+                    android:id="@+id/player2_life_remove"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_remove" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/player2_life"
+                style="@style/PlayerLifeText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/player2_poison_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp">
+
+                <ImageView
+                    android:id="@+id/player2_poison_add"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_add" />
+
+                <ImageView
+                    android:id="@+id/player2_poison_remove"
+                    style="@style/PlayerLifeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/button_remove" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/player2_poison"
+                style="@style/PlayerPoisonText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/player2_life"
-        style="@style/PlayerLifeText"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_alignTop="@+id/player2_container"
-        android:layout_alignBottom="@+id/player2_container" />
-
-</RelativeLayout>
+</LinearLayout>

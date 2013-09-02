@@ -3,5 +3,6 @@
 
     <!-- MainActivity dimens -->
     <dimen name="main_player_life_text_size">90sp</dimen>
+    <dimen name="main_player_poison_text_size">50sp</dimen>
 
 </resources>

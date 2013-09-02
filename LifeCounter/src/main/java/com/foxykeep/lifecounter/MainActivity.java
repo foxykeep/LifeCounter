@@ -12,14 +12,26 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    private static final String SAVED_STATE_SHOW_POISON_COUNTERS = "savedStateShowPoisonCounters";
+
     private static final String SAVED_STATE_PLAYER_1_LIFE = "savedStatePlayer1Life";
+    private static final String SAVED_STATE_PLAYER_1_POISON = "savedStatePlayer1Poison";
     private static final String SAVED_STATE_PLAYER_2_LIFE = "savedStatePlayer2Life";
+    private static final String SAVED_STATE_PLAYER_2_POISON = "savedStatePlayer2Poison";
 
     private TextView mPlayer1LifeView;
+    private View mPlayer1PoisonContainer;
+    private TextView mPlayer1PoisonView;
     private TextView mPlayer2LifeView;
+    private View mPlayer2PoisonContainer;
+    private TextView mPlayer2PoisonView;
 
-    private int mPlayer1Life = 20;
-    private int mPlayer2Life = 20;
+    private boolean mShowPoisonCounters;
+
+    private int mPlayer1Life;
+    private int mPlayer1Poison;
+    private int mPlayer2Life;
+    private int mPlayer2Poison;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +41,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         bindViews();
 
         if (savedInstanceState != null) {
-            mPlayer1Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_1_LIFE);
-            mPlayer2Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_2_LIFE);
-        }
+            mShowPoisonCounters = savedInstanceState.getBoolean(SAVED_STATE_SHOW_POISON_COUNTERS);
 
-        populateViews();
+            mPlayer1Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_1_LIFE);
+            mPlayer1Poison = savedInstanceState.getInt(SAVED_STATE_PLAYER_1_POISON);
+            mPlayer2Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_2_LIFE);
+            mPlayer2Poison = savedInstanceState.getInt(SAVED_STATE_PLAYER_2_POISON);
+
+            populateViews();
+        } else {
+            resetAndPopulateViews();
+        }
     }
 
     @Override
@@ -50,32 +68,75 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void bindViews() {
         // Player 1 views
-        findViewById(R.id.player1_add).setOnClickListener(this);
-        findViewById(R.id.player1_remove).setOnClickListener(this);
+        findViewById(R.id.player1_life_add).setOnClickListener(this);
+        findViewById(R.id.player1_life_remove).setOnClickListener(this);
         mPlayer1LifeView = (TextView) findViewById(R.id.player1_life);
+
+        mPlayer1PoisonContainer = findViewById(R.id.player1_poison_container);
+        findViewById(R.id.player1_poison_add).setOnClickListener(this);
+        findViewById(R.id.player1_poison_remove).setOnClickListener(this);
+        mPlayer1PoisonView = (TextView) findViewById(R.id.player1_poison);
 
         // Reset view
         findViewById(R.id.reset).setOnClickListener(this);
 
         // Player 2 views
-        findViewById(R.id.player2_add).setOnClickListener(this);
-        findViewById(R.id.player2_remove).setOnClickListener(this);
+        findViewById(R.id.player2_life_add).setOnClickListener(this);
+        findViewById(R.id.player2_life_remove).setOnClickListener(this);
         mPlayer2LifeView = (TextView) findViewById(R.id.player2_life);
+
+        mPlayer2PoisonContainer = findViewById(R.id.player2_poison_container);
+        findViewById(R.id.player2_poison_add).setOnClickListener(this);
+        findViewById(R.id.player2_poison_remove).setOnClickListener(this);
+        mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
     }
 
     private void populateViews() {
         mPlayer1LifeView.setText(String.valueOf(mPlayer1Life));
         mPlayer2LifeView.setText(String.valueOf(mPlayer2Life));
+
+        if (mShowPoisonCounters) {
+            mPlayer1PoisonContainer.setVisibility(View.VISIBLE);
+            mPlayer1PoisonView.setVisibility(View.VISIBLE);
+            mPlayer1PoisonView.setText(String.valueOf(mPlayer1Poison));
+
+            mPlayer2PoisonContainer.setVisibility(View.VISIBLE);
+            mPlayer2PoisonView.setVisibility(View.VISIBLE);
+            mPlayer2PoisonView.setText(String.valueOf(mPlayer2Poison));
+        } else {
+            mPlayer1PoisonContainer.setVisibility(View.GONE);
+            mPlayer1PoisonView.setVisibility(View.GONE);
+
+            mPlayer2PoisonContainer.setVisibility(View.GONE);
+            mPlayer2PoisonView.setVisibility(View.GONE);
+        }
+    }
+
+    private void resetAndPopulateViews() {
+        mPlayer1Life = 20;
+        mPlayer2Life = 20;
+        mPlayer1Poison = 0;
+        mPlayer2Poison = 0;
+
+        populateViews();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.player1_add:
+            case R.id.player1_life_add:
                 mPlayer1Life++;
                 break;
-            case R.id.player1_remove:
+            case R.id.player1_life_remove:
                 mPlayer1Life--;
+                break;
+            case R.id.player1_poison_add:
+                mPlayer1Poison++;
+                break;
+            case R.id.player1_poison_remove:
+                if (mPlayer1Poison > 0) {
+                    mPlayer1Poison--;
+                }
                 break;
             case R.id.reset:
                 AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -85,19 +146,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 b.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mPlayer1Life = 20;
-                        mPlayer2Life = 20;
-                        populateViews();
+                        resetAndPopulateViews();
                     }
                 });
                 b.setNegativeButton(android.R.string.no, null);
                 b.show();
                 break;
-            case R.id.player2_add:
+            case R.id.player2_life_add:
                 mPlayer2Life++;
                 break;
-            case R.id.player2_remove:
+            case R.id.player2_life_remove:
                 mPlayer2Life--;
+                break;
+            case R.id.player2_poison_add:
+                mPlayer2Poison++;
+                break;
+            case R.id.player2_poison_remove:
+                if (mPlayer2Poison > 0) {
+                    mPlayer2Poison--;
+                }
                 break;
         }
 
@@ -117,6 +184,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.action_show_poison:
+                mShowPoisonCounters = !item.isChecked();
+                item.setChecked(mShowPoisonCounters);
+                populateViews();
         }
         return super.onOptionsItemSelected(item);
     }
