@@ -111,7 +111,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_reset" />
+            android:src="@drawable/ic_reset"
+            android:background="@drawable/highlight_overlay"  />
 
     </LinearLayout>
 

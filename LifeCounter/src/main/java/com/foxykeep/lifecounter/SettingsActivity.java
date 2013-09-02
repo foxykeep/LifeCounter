@@ -1,5 +1,7 @@
 package com.foxykeep.lifecounter;
 
+import com.foxykeep.lifecounter.sharedprefs.SharedPrefsConfig;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,6 +21,8 @@ public final class SettingsActivity extends Activity implements View.OnClickList
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         bindViews();
+
+        populateViews();
     }
 
     private void bindViews() {
@@ -31,6 +35,13 @@ public final class SettingsActivity extends Activity implements View.OnClickList
         findViewById(R.id.item_starting_life).setOnClickListener(this);
     }
 
+    private void populateViews() {
+        mFlipCounterSwitch.setChecked(SharedPrefsConfig.getBoolean(this,
+                SharedPrefsConfig.FLIP_COUNTER));
+        mPoisonCountersSwitch.setChecked(SharedPrefsConfig.getBoolean(this,
+                SharedPrefsConfig.SHOW_POISON_COUNTERS));
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -38,9 +49,13 @@ public final class SettingsActivity extends Activity implements View.OnClickList
                 break;
             case R.id.item_flip_counter:
                 mFlipCounterSwitch.toggle();
+                SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.FLIP_COUNTER,
+                        mFlipCounterSwitch.isChecked());
                 break;
             case R.id.item_poison_counters:
                 mPoisonCountersSwitch.toggle();
+                SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.SHOW_POISON_COUNTERS,
+                        mPoisonCountersSwitch.isChecked());
                 break;
             case R.id.item_starting_life:
                 break;

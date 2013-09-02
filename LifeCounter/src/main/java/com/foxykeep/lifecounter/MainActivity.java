@@ -1,5 +1,6 @@
 package com.foxykeep.lifecounter;
 
+import com.foxykeep.lifecounter.sharedprefs.SharedPrefsConfig;
 import com.foxykeep.lifecounter.util.PlatformVersion;
 
 import android.annotation.TargetApi;
@@ -18,8 +19,6 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
-    private static final String SAVED_STATE_SHOW_POISON_COUNTERS = "savedStateShowPoisonCounters";
-
     private static final String SAVED_STATE_PLAYER_1_LIFE = "savedStatePlayer1Life";
     private static final String SAVED_STATE_PLAYER_1_POISON = "savedStatePlayer1Poison";
     private static final String SAVED_STATE_PLAYER_2_LIFE = "savedStatePlayer2Life";
@@ -33,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView mPlayer2PoisonView;
 
     private boolean mShowPoisonCounters;
+    private int mStartingLife;
 
     private int mPlayer1Life;
     private int mPlayer1Poison;
@@ -48,24 +48,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
         bindViews();
 
         if (savedInstanceState != null) {
-            mShowPoisonCounters = savedInstanceState.getBoolean(SAVED_STATE_SHOW_POISON_COUNTERS);
-
             mPlayer1Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_1_LIFE);
             mPlayer1Poison = savedInstanceState.getInt(SAVED_STATE_PLAYER_1_POISON);
             mPlayer2Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_2_LIFE);
             mPlayer2Poison = savedInstanceState.getInt(SAVED_STATE_PLAYER_2_POISON);
-
-            populateViews();
         } else {
-            resetAndPopulateViews();
+            // We need to load it once here to be able to use it in resetLife() even if we are
+            // loading it again in onStart()
+            mStartingLife = SharedPrefsConfig.getInt(this, SharedPrefsConfig.STARTING_LIFE, 20);
+            resetLife();
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mShowPoisonCounters = SharedPrefsConfig.getBoolean(this,
+                SharedPrefsConfig.SHOW_POISON_COUNTERS);
+        mStartingLife = SharedPrefsConfig.getInt(this, SharedPrefsConfig.STARTING_LIFE, 20);
+
+        populateViews();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        outState.putBoolean(SAVED_STATE_SHOW_POISON_COUNTERS, mShowPoisonCounters);
 
         outState.putInt(SAVED_STATE_PLAYER_1_LIFE, mPlayer1Life);
         outState.putInt(SAVED_STATE_PLAYER_1_POISON, mPlayer1Poison);
@@ -132,13 +140,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void resetAndPopulateViews() {
-        mPlayer1Life = 20;
-        mPlayer2Life = 20;
+    private void resetLife() {
+        mPlayer1Life = mStartingLife;
+        mPlayer2Life = mStartingLife;
         mPlayer1Poison = 0;
         mPlayer2Poison = 0;
-
-        populateViews();
     }
 
     @Override
@@ -166,7 +172,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 b.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        resetAndPopulateViews();
+                        resetLife();
+                        populateViews();
                     }
                 });
                 b.setNegativeButton(android.R.string.no, null);
@@ -203,12 +210,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.action_settings:
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.action_show_poison:
-                mShowPoisonCounters = !item.isChecked();
-                item.setChecked(mShowPoisonCounters);
-                populateViews();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 }
