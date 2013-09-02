@@ -1,0 +1,123 @@
+package com.foxykeep.lifecounter;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+public class MainActivity extends Activity implements View.OnClickListener {
+
+    private static final String SAVED_STATE_PLAYER_1_LIFE = "savedStatePlayer1Life";
+    private static final String SAVED_STATE_PLAYER_2_LIFE = "savedStatePlayer2Life";
+
+    private TextView mPlayer1LifeView;
+    private TextView mPlayer2LifeView;
+
+    private int mPlayer1Life = 20;
+    private int mPlayer2Life = 20;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        bindViews();
+
+        if (savedInstanceState != null) {
+            mPlayer1Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_1_LIFE);
+            mPlayer2Life = savedInstanceState.getInt(SAVED_STATE_PLAYER_2_LIFE);
+        }
+
+        populateViews();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(SAVED_STATE_SHOW_POISON_COUNTERS, mShowPoisonCounters);
+
+        outState.putInt(SAVED_STATE_PLAYER_1_LIFE, mPlayer1Life);
+        outState.putInt(SAVED_STATE_PLAYER_1_POISON, mPlayer1Poison);
+        outState.putInt(SAVED_STATE_PLAYER_2_LIFE, mPlayer2Life);
+        outState.putInt(SAVED_STATE_PLAYER_2_POISON, mPlayer2Poison);
+    }
+
+    private void bindViews() {
+        // Player 1 views
+        findViewById(R.id.player1_add).setOnClickListener(this);
+        findViewById(R.id.player1_remove).setOnClickListener(this);
+        mPlayer1LifeView = (TextView) findViewById(R.id.player1_life);
+
+        // Reset view
+        findViewById(R.id.reset).setOnClickListener(this);
+
+        // Player 2 views
+        findViewById(R.id.player2_add).setOnClickListener(this);
+        findViewById(R.id.player2_remove).setOnClickListener(this);
+        mPlayer2LifeView = (TextView) findViewById(R.id.player2_life);
+    }
+
+    private void populateViews() {
+        mPlayer1LifeView.setText(String.valueOf(mPlayer1Life));
+        mPlayer2LifeView.setText(String.valueOf(mPlayer2Life));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.player1_add:
+                mPlayer1Life++;
+                break;
+            case R.id.player1_remove:
+                mPlayer1Life--;
+                break;
+            case R.id.reset:
+                AlertDialog.Builder b = new AlertDialog.Builder(this);
+                b.setTitle(R.string.main_reset_dialog_title);
+                b.setMessage(R.string.main_reset_dialog_message);
+                b.setIcon(android.R.drawable.ic_dialog_alert);
+                b.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mPlayer1Life = 20;
+                        mPlayer2Life = 20;
+                        populateViews();
+                    }
+                });
+                b.setNegativeButton(android.R.string.no, null);
+                b.show();
+                break;
+            case R.id.player2_add:
+                mPlayer2Life++;
+                break;
+            case R.id.player2_remove:
+                mPlayer2Life--;
+                break;
+        }
+
+        populateViews();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

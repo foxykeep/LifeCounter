@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:paddingTop="44dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="32dp"
+    tools:context=".MainActivity"
+    tools:ignore="ContentDescription">
+
+    <!-- Player 1 views -->
+    <LinearLayout
+        android:id="@+id/player1_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/divider"
+        android:layout_toStartOf="@+id/divider"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/player1_add"
+            style="@style/PlayerLifeButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/button_add" />
+
+        <ImageView
+            android:id="@+id/player1_remove"
+            style="@style/PlayerLifeButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/button_remove" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/player1_life"
+        style="@style/PlayerLifeText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/player1_container"
+        android:layout_alignRight="@+id/player1_container" />
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/reset"
+        android:layout_centerHorizontal="true"
+        android:background="@color/main_divider"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <ImageView
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_action_reset" />
+
+    <!-- Player 2 views -->
+    <LinearLayout
+        android:id="@+id/player2_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/divider"
+        android:layout_toEndOf="@+id/divider"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/player2_add"
+            style="@style/PlayerLifeButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/button_add" />
+
+        <ImageView
+            android:id="@+id/player2_remove"
+            style="@style/PlayerLifeButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/button_remove" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/player2_life"
+        style="@style/PlayerLifeText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/player2_container"
+        android:layout_alignRight="@+id/player2_container" />
+
+</RelativeLayout>

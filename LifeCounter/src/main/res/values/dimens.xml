@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MainActivity dimens -->
+    <dimen name="main_player_life_text_size">90sp</dimen>
+
+</resources>

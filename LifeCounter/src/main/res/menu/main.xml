@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_settings"
+        android:title="@string/main_action_settings"
+        android:icon="@drawable/ic_action_settings"
+        android:orderInCategory="1"
+        android:showAsAction="always" />
+
+    <!-- Overflow items below -->
+
+    <item android:id="@+id/action_show_poison"
+        android:title="@string/main_action_show_poison"
+        android:orderInCategory="2"
+        android:checkable="true"
+        android:showAsAction="never" />
+
+</menu>

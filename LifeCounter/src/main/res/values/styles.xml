@@ -1,0 +1,33 @@
+<resources>
+
+    <style name="Theme.Transparent" parent="android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/ActionBarTransparent</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="ActionBarTransparent" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:displayOptions">none|showTitle</item>
+        <item name="android:titleTextStyle">@style/ActionBarTransparent.Title</item>
+    </style>
+
+    <style name="ActionBarTransparent.Title"
+        parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/action_bar_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="PlayerLifeButton">
+        <item name="android:background">@drawable/highlight_overlay</item>
+    </style>
+
+    <style name="PlayerLifeText" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/main_player_life_text_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+</resources>

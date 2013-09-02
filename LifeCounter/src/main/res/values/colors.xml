@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="action_bar_title">#FFDDDDDD</color>
+
+    <color name="background">#FF006837</color>
+
+    <!-- MainActivity colors -->
+    <color name="main_divider">#FFDDDDDD</color>
+
+</resources>
