@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private View mPlayer2PoisonContainer;
     private TextView mPlayer2PoisonView;
 
+    private boolean mFlipCounter;
     private boolean mShowPoisonCounters;
     private int mStartingLife;
 
@@ -64,9 +66,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onStart() {
         super.onStart();
 
+        mFlipCounter = SharedPrefsConfig.getBoolean(this, SharedPrefsConfig.FLIP_COUNTER);
         mShowPoisonCounters = SharedPrefsConfig.getBoolean(this,
                 SharedPrefsConfig.SHOW_POISON_COUNTERS);
         mStartingLife = SharedPrefsConfig.getInt(this, SharedPrefsConfig.STARTING_LIFE, 20);
+
+        Log.d("fox", "flip " + mFlipCounter);
 
         populateViews();
     }
@@ -120,6 +125,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void populateViews() {
+        mPlayer1LifeView.setRotation(mFlipCounter ? 180f : 0f);
         mPlayer1LifeView.setText(String.valueOf(mPlayer1Life));
         mPlayer2LifeView.setText(String.valueOf(mPlayer2Life));
 
@@ -151,10 +157,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.player1_life_add:
-                mPlayer1Life++;
+                if (mFlipCounter) {
+                    mPlayer1Life--;
+                } else {
+                    mPlayer1Life++;
+                }
                 break;
             case R.id.player1_life_remove:
-                mPlayer1Life--;
+                if (mFlipCounter) {
+                    mPlayer1Life++;
+                } else {
+                    mPlayer1Life--;
+                }
                 break;
             case R.id.player1_poison_add:
                 mPlayer1Poison++;
