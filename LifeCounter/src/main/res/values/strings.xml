@@ -20,6 +20,10 @@
     <string name="settings_header_points">POINTS</string>
     <string name="settings_item_flip_counter">Flip counter</string>
     <string name="settings_item_poison_counters">Show poison counters</string>
-    <string name="settings_item_starting_life">Starting life</string>
+    <string name="settings_item_starting_life_format">Starting life: %1$d</string>
+
+    <!-- NumberPickerDialog -->
+    <string name="number_picker_dialog_title">Starting Life</string>
+    <string name="number_picker_dialog_button_set">Set</string>
 
 </resources>
