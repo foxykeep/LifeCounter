@@ -88,7 +88,7 @@
 
             <TextView
                 style="@style/SettingsLinearLayoutTextView"
-                android:text="@string/settings_header_keep_screen_awake" />
+                android:text="@string/settings_item_keep_screen_awake" />
 
             <Switch
                 android:id="@+id/item_keep_screen_awake_switch"
@@ -98,6 +98,16 @@
                 android:clickable="false" />
 
         </com.foxykeep.lifecounter.widget.SettingsItemLinearLayout>
+
+        <!-- About settings -->
+        <com.foxykeep.lifecounter.widget.SettingsHeaderTextView
+            style="@style/SettingsHeader"
+            android:text="@string/settings_header_about" />
+
+        <com.foxykeep.lifecounter.widget.SettingsItemTextView
+            android:id="@+id/item_credits"
+            style="@style/SettingsItem"
+            android:text="@string/settings_item_credits" />
 
     </LinearLayout>
 

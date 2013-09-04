@@ -77,28 +77,32 @@ public final class SettingsActivity extends Activity implements View.OnClickList
         switch (v.getId()) {
             case R.id.item_background_color:
                 break;
+
             case R.id.item_flip_counter:
                 mFlipCounterSwitch.toggle();
                 SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.FLIP_COUNTER,
                         mFlipCounterSwitch.isChecked());
                 break;
+
             case R.id.item_poison_counters:
                 mPoisonCountersSwitch.toggle();
                 SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.SHOW_POISON_COUNTERS,
                         mPoisonCountersSwitch.isChecked());
                 break;
-            case R.id.item_starting_life:
+
+            case R.id.item_starting_life: {
                 LayoutInflater inflater = getLayoutInflater();
                 final NumberPicker numberPicker =
-                        (NumberPicker) inflater.inflate(R.layout.number_picker, null);
+                        (NumberPicker) inflater.inflate(R.layout.number_picker_dialog, null);
+                //noinspection ConstantConditions
                 numberPicker.setMinValue(0);
                 numberPicker.setMaxValue(Integer.MAX_VALUE);
                 numberPicker.setValue(SharedPrefsConfig.getInt(this,
                         SharedPrefsConfig.STARTING_LIFE, 20));
 
                 AlertDialog.Builder b = new AlertDialog.Builder(this);
-                b.setView(numberPicker);
                 b.setTitle(R.string.number_picker_dialog_title);
+                b.setView(numberPicker);
                 b.setPositiveButton(R.string.number_picker_dialog_button_set,
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -115,6 +119,8 @@ public final class SettingsActivity extends Activity implements View.OnClickList
                 b.setNegativeButton(android.R.string.cancel, null);
                 b.show();
                 break;
+            }
+
             case R.id.item_keep_screen_awake:
                 mKeepScreenAwakeSwitch.toggle();
                 SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.KEEP_SCREEN_AWAKE,

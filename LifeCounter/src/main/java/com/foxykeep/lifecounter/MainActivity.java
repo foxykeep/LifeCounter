@@ -79,6 +79,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    @SuppressWarnings("NullableProblems")
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
