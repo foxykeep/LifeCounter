@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="12dp">
+
+    <TextView
+        style="@style/CreditsDialogHeader"
+        android:text="@string/credits_dialog_development_header" />
+
+    <TextView
+        style="@style/CreditsDialogItem"
+        android:text="@string/credits_dialog_development_item" />
+
+    <TextView
+        style="@style/CreditsDialogHeader" 
+        android:text="@string/credits_dialog_design_header" />
+
+    <TextView
+        style="@style/CreditsDialogItem"
+        android:text="@string/credits_dialog_design_item" />
+
+</LinearLayout>

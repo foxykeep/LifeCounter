@@ -55,6 +55,8 @@ public final class SettingsActivity extends Activity implements View.OnClickList
 
         findViewById(R.id.item_keep_screen_awake).setOnClickListener(this);
         mKeepScreenAwakeSwitch = (Switch) findViewById(R.id.item_keep_screen_awake_switch);
+
+        findViewById(R.id.item_credits).setOnClickListener(this);
     }
 
     private void populateViews() {
@@ -126,6 +128,18 @@ public final class SettingsActivity extends Activity implements View.OnClickList
                 SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.KEEP_SCREEN_AWAKE,
                         mKeepScreenAwakeSwitch.isChecked());
                 break;
+
+            case R.id.item_credits: {
+                LayoutInflater inflater = getLayoutInflater();
+                View view = inflater.inflate(R.layout.credits_dialog, null);
+
+                AlertDialog.Builder b = new AlertDialog.Builder(this);
+                b.setTitle(R.string.credits_dialog_title);
+                b.setView(view);
+                b.setNeutralButton(R.string.credits_dialog_button_close, null);
+                b.show();
+                break;
+            }
         }
     }
 

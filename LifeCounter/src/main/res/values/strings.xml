@@ -23,11 +23,23 @@
     <string name="settings_item_starting_life_format">Starting life: %1$d</string>
     <string name="settings_header_other">OTHER</string>
     <string name="settings_item_keep_screen_awake">Keep screen awake</string>
+    <string name="settings_header_about">ABOUT</string>
+    <string name="settings_item_credits">Credits</string>
 
     <!-- NumberPicker dialog -->
     <eat-comment />
 
     <string name="number_picker_dialog_title">Starting Life</string>
     <string name="number_picker_dialog_button_set">Set</string>
+
+    <!-- Credits dialog -->
+    <eat-comment />
+
+    <string name="credits_dialog_title">Credits</string>
+    <string name="credits_dialog_development_header">Development</string>
+    <string name="credits_dialog_development_item">Nicolas Klein (foxykeep.com)</string>
+    <string name="credits_dialog_design_header">Design</string>
+    <string name="credits_dialog_design_item">Marie Schweiz (marie-schweiz.de)</string>
+    <string name="credits_dialog_button_close">Close</string>
 
 </resources>
