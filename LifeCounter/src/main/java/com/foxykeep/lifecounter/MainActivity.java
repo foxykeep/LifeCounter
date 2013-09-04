@@ -1,18 +1,14 @@
 package com.foxykeep.lifecounter;
 
 import com.foxykeep.lifecounter.sharedprefs.SharedPrefsConfig;
-import com.foxykeep.lifecounter.util.PlatformVersion;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,8 +67,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 SharedPrefsConfig.SHOW_POISON_COUNTERS);
         mStartingLife = SharedPrefsConfig.getInt(this, SharedPrefsConfig.STARTING_LIFE, 20);
 
-        Log.d("fox", "flip " + mFlipCounter);
-
         populateViews();
     }
 
@@ -115,13 +109,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     private void setBackground() {
-        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TR_BL,
-                new int[] {Color.rgb(220, 20, 20), Color.rgb(0, 146, 69)});
-        if (PlatformVersion.isAtLeastJellyBean()) {
-            findViewById(R.id.root_container).setBackground(gd);
-        } else {
-            findViewById(R.id.root_container).setBackgroundDrawable(gd);
-        }
+        findViewById(R.id.root_container).setBackgroundResource(R.drawable.bg_fox);
+//        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TR_BL,
+//                new int[] {Color.rgb(220, 20, 20), Color.rgb(0, 146, 69)});
+//        if (PlatformVersion.isAtLeastJellyBean()) {
+//            findViewById(R.id.root_container).setBackground(gd);
+//        } else {
+//            findViewById(R.id.root_container).setBackgroundDrawable(gd);
+//        }
     }
 
     private void populateViews() {
