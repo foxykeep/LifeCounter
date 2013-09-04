@@ -18,9 +18,12 @@ import android.widget.TextView;
 public final class SettingsActivity extends Activity implements View.OnClickListener {
 
     private ImageView mBackgroundColorImageView;
+
     private Switch mFlipCounterSwitch;
     private Switch mPoisonCountersSwitch;
     private TextView mStartingLifeTextView;
+
+    private Switch mKeepScreenAwakeSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public final class SettingsActivity extends Activity implements View.OnClickList
 
         mStartingLifeTextView = (TextView) findViewById(R.id.item_starting_life);
         mStartingLifeTextView.setOnClickListener(this);
+
+        findViewById(R.id.item_keep_screen_awake).setOnClickListener(this);
+        mKeepScreenAwakeSwitch = (Switch) findViewById(R.id.item_keep_screen_awake_switch);
     }
 
     private void populateViews() {
@@ -61,6 +67,9 @@ public final class SettingsActivity extends Activity implements View.OnClickList
         int startingLife = SharedPrefsConfig.getInt(this, SharedPrefsConfig.STARTING_LIFE, 20);
         mStartingLifeTextView.setText(getString(R.string.settings_item_starting_life_format,
                 startingLife));
+
+        mKeepScreenAwakeSwitch.setChecked(SharedPrefsConfig.getBoolean(this,
+                SharedPrefsConfig.KEEP_SCREEN_AWAKE, true));
     }
 
     @Override
@@ -105,6 +114,11 @@ public final class SettingsActivity extends Activity implements View.OnClickList
                         });
                 b.setNegativeButton(android.R.string.cancel, null);
                 b.show();
+                break;
+            case R.id.item_keep_screen_awake:
+                mKeepScreenAwakeSwitch.toggle();
+                SharedPrefsConfig.setBoolean(this, SharedPrefsConfig.KEEP_SCREEN_AWAKE,
+                        mKeepScreenAwakeSwitch.isChecked());
                 break;
         }
     }

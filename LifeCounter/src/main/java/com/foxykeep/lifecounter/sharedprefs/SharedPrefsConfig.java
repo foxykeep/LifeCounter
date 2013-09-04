@@ -15,6 +15,7 @@ public final class SharedPrefsConfig {
     public static final String FLIP_COUNTER = "flipCounter";
     public static final String SHOW_POISON_COUNTERS = "showPoisonCounters";
     public static final String STARTING_LIFE = "startingLife";
+    public static final String KEEP_SCREEN_AWAKE = "keepScreenAwake";
 
     public static String getString(Context context, String key) {
         return getSharedPrefs(context).getString(key, null);

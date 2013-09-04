@@ -77,6 +77,27 @@
             android:id="@+id/item_starting_life"
             style="@style/SettingsItem" />
 
+        <!-- Other settings -->
+        <com.foxykeep.lifecounter.widget.SettingsHeaderTextView
+            style="@style/SettingsHeader"
+            android:text="@string/settings_header_other" />
+
+        <com.foxykeep.lifecounter.widget.SettingsItemLinearLayout
+            android:id="@+id/item_keep_screen_awake"
+            style="@style/SettingsLinearLayout">
+
+            <TextView
+                style="@style/SettingsLinearLayoutTextView"
+                android:text="@string/settings_header_keep_screen_awake" />
+
+            <Switch
+                android:id="@+id/item_keep_screen_awake_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="false" />
+
+        </com.foxykeep.lifecounter.widget.SettingsItemLinearLayout>
 
     </LinearLayout>
 
