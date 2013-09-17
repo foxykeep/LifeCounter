@@ -7,7 +7,7 @@
     android:paddingTop="44dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingBottom="32dp"
+    android:paddingBottom="16dp"
     tools:context=".MainActivity"
     tools:ignore="ContentDescription"
     android:baselineAligned="false">
@@ -101,16 +101,17 @@
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/main_divider"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp" />
+            android:background="@color/main_divider" />
 
         <ImageView
             android:id="@+id/reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:padding="16dp"
             android:src="@drawable/ic_reset"
             android:background="@drawable/highlight_overlay"  />
 
