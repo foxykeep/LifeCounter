@@ -28,6 +28,11 @@
             android:label="@string/settings_title"
             android:theme="@android:style/Theme.Holo.Light" />
 
+        <activity
+            android:name=".BackgroundActivity"
+            android:label="@string/background_title"
+            android:theme="@style/Theme.Transparent" />
+
     </application>
 
 </manifest>

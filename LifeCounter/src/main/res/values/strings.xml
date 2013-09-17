@@ -42,4 +42,9 @@
     <string name="credits_dialog_design_item">Marie Schweiz (marie-schweiz.de)</string>
     <string name="credits_dialog_button_close">Close</string>
 
+    <!-- BackgroundActivity texts -->
+    <eat-comment />
+
+    <string name="background_title">Background</string>
+
 </resources>

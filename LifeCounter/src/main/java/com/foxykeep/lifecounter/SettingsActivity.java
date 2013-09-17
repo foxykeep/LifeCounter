@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -78,6 +79,8 @@ public final class SettingsActivity extends Activity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.item_background_color:
+                Intent intent = new Intent(this, BackgroundActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.item_flip_counter:
