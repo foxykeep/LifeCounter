@@ -8,7 +8,8 @@
 
     <TextView
         style="@style/CreditsDialogHeader"
-        android:text="@string/credits_dialog_development_header" />
+        android:text="@string/credits_dialog_development_header"
+        android:fontFamily="sans-serif-light" />
 
     <TextView
         style="@style/CreditsDialogItem"
@@ -16,7 +17,8 @@
 
     <TextView
         style="@style/CreditsDialogHeader" 
-        android:text="@string/credits_dialog_design_header" />
+        android:text="@string/credits_dialog_design_header"
+        android:fontFamily="sans-serif-light" />
 
     <TextView
         style="@style/CreditsDialogItem"
