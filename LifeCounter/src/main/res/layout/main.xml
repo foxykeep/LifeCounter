@@ -53,7 +53,8 @@
                 android:id="@+id/player1_life"
                 style="@style/PlayerLifeText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light" />
 
         </FrameLayout>
 
@@ -93,7 +94,8 @@
                 android:id="@+id/player1_poison"
                 style="@style/PlayerPoisonText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"  />
 
             <ImageView
                 android:id="@+id/player1_poison_icon"
@@ -176,7 +178,8 @@
                 android:id="@+id/player2_life"
                 style="@style/PlayerLifeText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"  />
 
         </FrameLayout>
 
@@ -216,7 +219,8 @@
                 android:id="@+id/player2_poison"
                 style="@style/PlayerPoisonText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-light"  />
 
             <ImageView
                 android:id="@+id/player2_poison_icon"
