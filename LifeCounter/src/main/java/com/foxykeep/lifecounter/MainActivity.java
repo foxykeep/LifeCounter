@@ -137,6 +137,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (mShowPoisonCounters) {
             mPlayer1PoisonContainer.setVisibility(View.VISIBLE);
             mPlayer1PoisonView.setVisibility(View.VISIBLE);
+            mPlayer1PoisonView.setRotation(mFlipCounter ? 180f : 0f);
             mPlayer1PoisonView.setText(String.valueOf(mPlayer1Poison));
 
             mPlayer2PoisonContainer.setVisibility(View.VISIBLE);
@@ -176,11 +177,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.player1_poison_add:
-                mPlayer1Poison++;
+                if (mFlipCounter) {
+                    if (mPlayer1Poison > 0) {
+                        mPlayer1Poison--;
+                    }
+                } else {
+                    mPlayer1Poison++;
+                }
                 break;
             case R.id.player1_poison_remove:
-                if (mPlayer1Poison > 0) {
-                    mPlayer1Poison--;
+                if (mFlipCounter) {
+                    mPlayer1Poison++;
+                } else {
+                    if (mPlayer1Poison > 0) {
+                        mPlayer1Poison--;
+                    }
                 }
                 break;
             case R.id.reset:
