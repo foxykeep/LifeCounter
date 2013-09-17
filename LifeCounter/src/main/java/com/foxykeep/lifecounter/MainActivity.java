@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -25,9 +26,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView mPlayer1LifeView;
     private View mPlayer1PoisonContainer;
     private TextView mPlayer1PoisonView;
+    private ImageView mPlayer1PoisonIconView;
     private TextView mPlayer2LifeView;
     private View mPlayer2PoisonContainer;
     private TextView mPlayer2PoisonView;
+    private ImageView mPlayer2PoisonIconView;
 
     private boolean mFlipCounter;
     private boolean mShowPoisonCounters;
@@ -102,6 +105,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.player1_poison_add).setOnClickListener(this);
         findViewById(R.id.player1_poison_remove).setOnClickListener(this);
         mPlayer1PoisonView = (TextView) findViewById(R.id.player1_poison);
+        mPlayer1PoisonIconView = (ImageView) findViewById(R.id.player1_poison_icon);
 
         // Reset view
         findViewById(R.id.reset).setOnClickListener(this);
@@ -115,6 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.player2_poison_add).setOnClickListener(this);
         findViewById(R.id.player2_poison_remove).setOnClickListener(this);
         mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
+        mPlayer2PoisonIconView = (ImageView) findViewById(R.id.player2_poison_icon);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -139,10 +144,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mPlayer1PoisonView.setVisibility(View.VISIBLE);
             mPlayer1PoisonView.setRotation(mFlipCounter ? 180f : 0f);
             mPlayer1PoisonView.setText(String.valueOf(mPlayer1Poison));
+            mPlayer1PoisonIconView.setImageResource(mPlayer1Poison > 0
+                    ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled);
 
             mPlayer2PoisonContainer.setVisibility(View.VISIBLE);
             mPlayer2PoisonView.setVisibility(View.VISIBLE);
             mPlayer2PoisonView.setText(String.valueOf(mPlayer2Poison));
+            mPlayer2PoisonIconView.setImageResource(mPlayer2Poison > 0
+                    ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled);
         } else {
             mPlayer1PoisonContainer.setVisibility(View.GONE);
             mPlayer1PoisonView.setVisibility(View.GONE);
