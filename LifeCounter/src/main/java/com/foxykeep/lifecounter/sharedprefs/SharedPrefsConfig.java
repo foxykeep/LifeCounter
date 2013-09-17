@@ -10,8 +10,7 @@ public final class SharedPrefsConfig {
 
     private static final String PREFS_FILE = "lifeCounter.sharedPrefs";
 
-    public static final String BACKGROUND_COLOR_1 = "backgroundColor1";
-    public static final String BACKGROUND_COLOR_2 = "backgroundColor2";
+    public static final String BACKGROUND_ID = "backgroundId";
     public static final String FLIP_COUNTER = "flipCounter";
     public static final String SHOW_POISON_COUNTERS = "showPoisonCounters";
     public static final String STARTING_LIFE = "startingLife";

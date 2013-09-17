@@ -7,13 +7,24 @@
 
     <style name="ActionBarTransparent" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:displayOptions">none|showTitle</item>
         <item name="android:titleTextStyle">@style/ActionBarTransparent.Title</item>
     </style>
 
     <style name="ActionBarTransparent.Title"
         parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@color/action_bar_title</item>
+    </style>
+
+    <style name="Theme.Transparent.Main">
+        <item name="android:actionBarStyle">@style/ActionBarTransparent.Main</item>
+    </style>
+
+    <style name="ActionBarTransparent.Main">
+        <item name="android:displayOptions">none|showTitle</item>
+        <item name="android:titleTextStyle">@style/ActionBarTransparent.Title.Main</item>
+    </style>
+
+    <style name="ActionBarTransparent.Title.Main">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
     </style>

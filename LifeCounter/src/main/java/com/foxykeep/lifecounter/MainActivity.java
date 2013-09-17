@@ -1,13 +1,12 @@
 package com.foxykeep.lifecounter;
 
+import com.foxykeep.lifecounter.data.Background;
 import com.foxykeep.lifecounter.sharedprefs.SharedPrefsConfig;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +21,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final String SAVED_STATE_PLAYER_1_POISON = "savedStatePlayer1Poison";
     private static final String SAVED_STATE_PLAYER_2_LIFE = "savedStatePlayer2Life";
     private static final String SAVED_STATE_PLAYER_2_POISON = "savedStatePlayer2Poison";
+
+    private View mRootView;
 
     private TextView mPlayer1LifeView;
     private View mPlayer1PoisonContainer;
@@ -94,7 +95,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindViews() {
-        setBackground();
+        mRootView = findViewById(R.id.root_container);
 
         // Player 1 views
         findViewById(R.id.player1_life_add).setOnClickListener(this);
@@ -122,19 +123,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer2PoisonIconView = (ImageView) findViewById(R.id.player2_poison_icon);
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void setBackground() {
-        findViewById(R.id.root_container).setBackgroundResource(R.drawable.bg_fox);
-//        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TR_BL,
-//                new int[] {Color.rgb(220, 20, 20), Color.rgb(0, 146, 69)});
-//        if (PlatformVersion.isAtLeastJellyBean()) {
-//            findViewById(R.id.root_container).setBackground(gd);
-//        } else {
-//            findViewById(R.id.root_container).setBackgroundDrawable(gd);
-//        }
-    }
-
     private void populateViews() {
+        Background.loadSavedBackgroundOnView(mRootView);
+
         mPlayer1LifeView.setRotation(mFlipCounter ? 180f : 0f);
         mPlayer1LifeView.setText(String.valueOf(mPlayer1Life));
         mPlayer2LifeView.setText(String.valueOf(mPlayer2Life));
