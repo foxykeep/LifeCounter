@@ -11,14 +11,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public final class SettingsActivity extends Activity implements View.OnClickListener {
-
-    private ImageView mBackgroundColorImageView;
 
     private Switch mFlipCounterSwitch;
     private Switch mPoisonCountersSwitch;
@@ -43,7 +40,6 @@ public final class SettingsActivity extends Activity implements View.OnClickList
 
     private void bindViews() {
         findViewById(R.id.item_background_color).setOnClickListener(this);
-        mBackgroundColorImageView = (ImageView) findViewById(R.id.item_background_color_image_view);
 
         findViewById(R.id.item_flip_counter).setOnClickListener(this);
         mFlipCounterSwitch = (Switch) findViewById(R.id.item_flip_counter_switch);

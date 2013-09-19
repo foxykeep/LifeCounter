@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:scrollbarStyle="outsideOverlay"
     tools:context=".SettingsActivity"
     tools:ignore="ContentDescription">
 
@@ -18,21 +19,10 @@
             style="@style/SettingsHeader"
             android:text="@string/settings_header_background" />
 
-        <com.foxykeep.lifecounter.widget.SettingsItemLinearLayout
+        <com.foxykeep.lifecounter.widget.SettingsItemTextView
             android:id="@+id/item_background_color"
-            style="@style/SettingsLinearLayout"
-            android:paddingRight="8dp">
-
-            <TextView
-                style="@style/SettingsLinearLayoutTextView"
-                android:text="@string/settings_item_background_color" />
-
-            <ImageView
-                android:id="@+id/item_background_color_image_view"
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
-
-        </com.foxykeep.lifecounter.widget.SettingsItemLinearLayout>
+            style="@style/SettingsItem"
+            android:text="@string/settings_item_background_color" />
 
         <!-- Points settings -->
         <com.foxykeep.lifecounter.widget.SettingsHeaderTextView
