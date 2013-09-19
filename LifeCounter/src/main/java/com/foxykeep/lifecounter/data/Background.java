@@ -53,16 +53,16 @@ public final class Background {
 
     public static ArrayList<Background> getBackgrounds() {
         if (BACKGROUND_LIST.isEmpty()) {
-            BACKGROUND_LIST.add(Background.newGradient(1 /* id */, R.color.background_1_color,
+            BACKGROUND_LIST.add(Background.newColor(1 /* id */, R.color.background_5_color));
+            BACKGROUND_LIST.add(Background.newColor(2 /* id */, R.color.background_6_color));
+            BACKGROUND_LIST.add(Background.newColor(3 /* id */, R.color.background_7_color));
+            BACKGROUND_LIST.add(Background.newColor(4 /* id */, R.color.background_2_color));
+            BACKGROUND_LIST.add(Background.newGradient(5 /* id */, R.color.background_1_color,
                     R.color.background_1_color2));
-            BACKGROUND_LIST.add(Background.newColor(2 /* id */, R.color.background_2_color));
-            BACKGROUND_LIST.add(Background.newGradient(3 /* id */, R.color.background_3_color,
+            BACKGROUND_LIST.add(Background.newGradient(6 /* id */, R.color.background_3_color,
                     R.color.background_3_color2));
-            BACKGROUND_LIST.add(Background.newGradient(4 /* id */, R.color.background_4_color,
+            BACKGROUND_LIST.add(Background.newGradient(7 /* id */, R.color.background_4_color,
                     R.color.background_4_color2));
-            BACKGROUND_LIST.add(Background.newColor(5 /* id */, R.color.background_5_color));
-            BACKGROUND_LIST.add(Background.newColor(6 /* id */, R.color.background_6_color));
-            BACKGROUND_LIST.add(Background.newColor(7 /* id */, R.color.background_7_color));
             BACKGROUND_LIST.add(Background.newDrawable(8 /* id */, R.drawable.bg_fox));
         }
 
