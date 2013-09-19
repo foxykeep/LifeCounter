@@ -24,19 +24,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private View mRootView;
 
+    // Player 1 views
     private TextView mPlayer1LifeView;
     private View mPlayer1PoisonContainer;
+    private View mPlayer1PoisonAddView;
+    private View mPlayer1PoisonRemoveView;
     private TextView mPlayer1PoisonView;
     private ImageView mPlayer1PoisonIconView;
+
+    // Player 2 views
     private TextView mPlayer2LifeView;
     private View mPlayer2PoisonContainer;
+    private View mPlayer2PoisonAddView;
+    private View mPlayer2PoisonRemoveView;
     private TextView mPlayer2PoisonView;
     private ImageView mPlayer2PoisonIconView;
 
+    // Settings
     private boolean mFlipCounter;
     private boolean mShowPoisonCounters;
     private int mStartingLife;
 
+    // Counters
     private int mPlayer1Life;
     private int mPlayer1Poison;
     private int mPlayer2Life;
@@ -103,8 +112,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer1LifeView = (TextView) findViewById(R.id.player1_life);
 
         mPlayer1PoisonContainer = findViewById(R.id.player1_poison_container);
-        findViewById(R.id.player1_poison_add).setOnClickListener(this);
-        findViewById(R.id.player1_poison_remove).setOnClickListener(this);
+        mPlayer1PoisonAddView = findViewById(R.id.player1_poison_add);
+        mPlayer1PoisonAddView.setOnClickListener(this);
+        mPlayer1PoisonRemoveView = findViewById(R.id.player1_poison_remove);
+        mPlayer1PoisonRemoveView.setOnClickListener(this);
         mPlayer1PoisonView = (TextView) findViewById(R.id.player1_poison);
         mPlayer1PoisonIconView = (ImageView) findViewById(R.id.player1_poison_icon);
 
@@ -117,8 +128,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer2LifeView = (TextView) findViewById(R.id.player2_life);
 
         mPlayer2PoisonContainer = findViewById(R.id.player2_poison_container);
-        findViewById(R.id.player2_poison_add).setOnClickListener(this);
-        findViewById(R.id.player2_poison_remove).setOnClickListener(this);
+        mPlayer2PoisonAddView = findViewById(R.id.player2_poison_add);
+        mPlayer2PoisonAddView.setOnClickListener(this);
+        mPlayer2PoisonRemoveView = findViewById(R.id.player2_poison_remove);
+        mPlayer2PoisonRemoveView.setOnClickListener(this);
         mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
         mPlayer2PoisonIconView = (ImageView) findViewById(R.id.player2_poison_icon);
     }
@@ -133,16 +146,53 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (mShowPoisonCounters) {
             mPlayer1PoisonContainer.setVisibility(View.VISIBLE);
             mPlayer1PoisonView.setVisibility(View.VISIBLE);
-            mPlayer1PoisonView.setRotation(mFlipCounter ? 180f : 0f);
             mPlayer1PoisonView.setText(String.valueOf(mPlayer1Poison));
             mPlayer1PoisonIconView.setImageResource(mPlayer1Poison > 0
                     ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled);
+
+            if (mFlipCounter) {
+                mPlayer1PoisonView.setRotation(180f);
+
+                if (mPlayer1Poison == 0) {
+                    mPlayer1PoisonAddView.setVisibility(View.INVISIBLE);
+                    mPlayer1PoisonAddView.setEnabled(false);
+                } else {
+                    mPlayer1PoisonAddView.setVisibility(View.VISIBLE);
+                    mPlayer1PoisonAddView.setEnabled(true);
+                }
+
+                // Reset the other view (in case we just flipped the counters)
+                mPlayer1PoisonRemoveView.setVisibility(View.VISIBLE);
+                mPlayer1PoisonRemoveView.setEnabled(true);
+            } else {
+                mPlayer1PoisonView.setRotation(0f);
+
+                // Reset the other view (in case we just flipped the counters)
+                mPlayer1PoisonAddView.setVisibility(View.VISIBLE);
+                mPlayer1PoisonAddView.setEnabled(true);
+
+                if (mPlayer1Poison == 0) {
+                    mPlayer1PoisonRemoveView.setVisibility(View.INVISIBLE);
+                    mPlayer1PoisonRemoveView.setEnabled(false);
+                } else {
+                    mPlayer1PoisonRemoveView.setVisibility(View.VISIBLE);
+                    mPlayer1PoisonRemoveView.setEnabled(true);
+                }
+            }
 
             mPlayer2PoisonContainer.setVisibility(View.VISIBLE);
             mPlayer2PoisonView.setVisibility(View.VISIBLE);
             mPlayer2PoisonView.setText(String.valueOf(mPlayer2Poison));
             mPlayer2PoisonIconView.setImageResource(mPlayer2Poison > 0
                     ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled);
+
+            if (mPlayer2Poison == 0) {
+                mPlayer2PoisonRemoveView.setVisibility(View.INVISIBLE);
+                mPlayer2PoisonRemoveView.setEnabled(false);
+            } else {
+                mPlayer2PoisonRemoveView.setVisibility(View.VISIBLE);
+                mPlayer2PoisonRemoveView.setEnabled(true);
+            }
         } else {
             mPlayer1PoisonContainer.setVisibility(View.GONE);
             mPlayer1PoisonView.setVisibility(View.GONE);
@@ -178,9 +228,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.player1_poison_add:
                 if (mFlipCounter) {
-                    if (mPlayer1Poison > 0) {
-                        mPlayer1Poison--;
-                    }
+                    mPlayer1Poison--;
                 } else {
                     mPlayer1Poison++;
                 }
@@ -189,9 +237,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (mFlipCounter) {
                     mPlayer1Poison++;
                 } else {
-                    if (mPlayer1Poison > 0) {
-                        mPlayer1Poison--;
-                    }
+                    mPlayer1Poison--;
                 }
                 break;
             case R.id.reset:
@@ -219,9 +265,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 mPlayer2Poison++;
                 break;
             case R.id.player2_poison_remove:
-                if (mPlayer2Poison > 0) {
-                    mPlayer2Poison--;
-                }
+                mPlayer2Poison--;
                 break;
         }
 
