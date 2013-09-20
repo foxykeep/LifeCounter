@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final String SAVED_STATE_PLAYER_2_LIFE = "savedStatePlayer2Life";
     private static final String SAVED_STATE_PLAYER_2_POISON = "savedStatePlayer2Poison";
 
-    private View mRootView;
+    private ImageView mBackgroundView;
 
     // Player 1 views
     private TextView mPlayer1LifeView;
@@ -35,7 +35,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     // Player 2 views
     private TextView mPlayer2LifeView;
     private View mPlayer2PoisonContainer;
-    private View mPlayer2PoisonAddView;
     private View mPlayer2PoisonRemoveView;
     private TextView mPlayer2PoisonView;
     private ImageView mPlayer2PoisonIconView;
@@ -104,7 +103,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void bindViews() {
-        mRootView = findViewById(R.id.root_container);
+        mBackgroundView = (ImageView) findViewById(R.id.background);
 
         // Player 1 views
         findViewById(R.id.player1_life_add).setOnClickListener(this);
@@ -128,8 +127,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer2LifeView = (TextView) findViewById(R.id.player2_life);
 
         mPlayer2PoisonContainer = findViewById(R.id.player2_poison_container);
-        mPlayer2PoisonAddView = findViewById(R.id.player2_poison_add);
-        mPlayer2PoisonAddView.setOnClickListener(this);
+        findViewById(R.id.player2_poison_add).setOnClickListener(this);
         mPlayer2PoisonRemoveView = findViewById(R.id.player2_poison_remove);
         mPlayer2PoisonRemoveView.setOnClickListener(this);
         mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
@@ -137,7 +135,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void populateViews() {
-        Background.loadSavedBackgroundOnView(mRootView);
+        Background.loadSavedBackgroundOnView(mBackgroundView);
 
         mPlayer1LifeView.setRotation(mFlipCounter ? 180f : 0f);
         mPlayer1LifeView.setText(String.valueOf(mPlayer1Life));

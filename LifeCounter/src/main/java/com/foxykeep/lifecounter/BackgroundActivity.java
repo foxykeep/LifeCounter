@@ -18,7 +18,7 @@ import android.widget.ImageView;
 
 public class BackgroundActivity extends Activity implements AdapterView.OnItemClickListener {
 
-    private View mRootView;
+    private ImageView mBackgroundView;
 
     private BackgroundAdapter mBackgroundAdapter;
 
@@ -35,11 +35,11 @@ public class BackgroundActivity extends Activity implements AdapterView.OnItemCl
         bindViews();
 
         populateAdapter();
-        Background.loadSavedBackgroundOnView(mRootView);
+        Background.loadSavedBackgroundOnView(mBackgroundView);
     }
 
     private void bindViews() {
-        mRootView = findViewById(R.id.root_container);
+        mBackgroundView = (ImageView) findViewById(R.id.background);
 
         mBackgroundAdapter = new BackgroundAdapter(this);
         GridView gridview = (GridView) findViewById(R.id.grid_view);
@@ -55,7 +55,7 @@ public class BackgroundActivity extends Activity implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Background background = mBackgroundAdapter.getItem(position);
         SharedPrefsConfig.setInt(this, SharedPrefsConfig.BACKGROUND_ID, background.id);
-        Background.loadSavedBackgroundOnView(mRootView);
+        Background.loadSavedBackgroundOnView(mBackgroundView);
     }
 
     @Override

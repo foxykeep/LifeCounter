@@ -2,7 +2,6 @@ package com.foxykeep.lifecounter.data;
 
 import com.foxykeep.lifecounter.R;
 import com.foxykeep.lifecounter.sharedprefs.SharedPrefsConfig;
-import com.foxykeep.lifecounter.util.PlatformVersion;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -11,7 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -90,8 +89,8 @@ public final class Background {
 
     @SuppressWarnings("deprecation")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static void loadSavedBackgroundOnView(View view) {
-        Context context = view.getContext();
+    public static void loadSavedBackgroundOnView(ImageView imageView) {
+        Context context = imageView.getContext();
         Background currentBackground = null;
 
         int backgroundId = SharedPrefsConfig.getInt(context, SharedPrefsConfig.BACKGROUND_ID, 1);
@@ -105,11 +104,7 @@ public final class Background {
         }
 
         if (currentBackground != null) {
-            if (PlatformVersion.isAtLeastJellyBean()) {
-                view.setBackground(currentBackground.getDrawable(context));
-            } else {
-                view.setBackgroundDrawable(currentBackground.getDrawable(context));
-            }
+            imageView.setImageDrawable(currentBackground.getDrawable(context));
         }
 
     }
