@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item type="integer" name="background_grid_view_num_columns">2</item>
+    <item type="integer" name="background_grid_view_num_columns">3</item>
 
 </resources>
