@@ -18,7 +18,7 @@
 
     <string name="settings_title">Settings</string>
     <string name="settings_header_background">BACKGROUND</string>
-    <string name="settings_item_background_color">Background color</string>
+    <string name="settings_item_background_color">Set background</string>
     <string name="settings_header_points">POINTS</string>
     <string name="settings_item_flip_counter">Flip counter</string>
     <string name="settings_item_poison_counters">Show poison counters</string>
@@ -47,6 +47,6 @@
     <!-- BackgroundActivity texts -->
     <eat-comment />
 
-    <string name="background_title">Background</string>
+    <string name="background_title">Set background</string>
 
 </resources>

@@ -4,10 +4,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@drawable/ic_arrow_white_up"
-        android:top="30dp" />
-
-    <item
-        android:drawable="@drawable/highlight_overlay" />
+        android:drawable="@drawable/ic_arrow_down"
+        android:bottom="30dp"/>
 
 </layer-list>

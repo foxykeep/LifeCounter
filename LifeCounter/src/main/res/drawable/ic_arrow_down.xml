@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 Google Inc.  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/ic_arrow_down_pressed" />
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/ic_arrow_down_selected" />
+    <item
+        android:drawable="@drawable/ic_arrow_down_normal" />
+
+</selector>

@@ -29,10 +29,6 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="PlayerLifeButton">
-        <item name="android:background">@drawable/highlight_overlay</item>
-    </style>
-
     <style name="PlayerLifeText" parent="android:Widget.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

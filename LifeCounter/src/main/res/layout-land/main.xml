@@ -39,19 +39,17 @@
 
                 <View
                     android:id="@+id/player1_life_add"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_up_overlay" />
+                    android:background="@drawable/ic_arrow_up_background" />
 
                 <View
                     android:id="@+id/player1_life_remove"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_down_overlay" />
+                    android:background="@drawable/ic_arrow_down_background" />
 
             </LinearLayout>
 
@@ -98,19 +96,17 @@
 
                 <View
                     android:id="@+id/player1_poison_add"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_up_overlay" />
+                    android:background="@drawable/ic_arrow_up_background" />
 
                 <View
                     android:id="@+id/player1_poison_remove"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_down_overlay" />
+                    android:background="@drawable/ic_arrow_down_background" />
 
             </LinearLayout>
 
@@ -151,8 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="16dp"
-                android:src="@drawable/ic_reset"
-                android:background="@drawable/highlight_overlay"  />
+                android:src="@drawable/ic_reset" />
 
         </LinearLayout>
 
@@ -170,19 +165,17 @@
 
                 <View
                     android:id="@+id/player2_life_add"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_up_overlay" />
+                    android:background="@drawable/ic_arrow_up_background" />
 
                 <View
                     android:id="@+id/player2_life_remove"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_down_overlay" />
+                    android:background="@drawable/ic_arrow_down_background" />
 
             </LinearLayout>
 
@@ -219,19 +212,17 @@
 
                 <View
                     android:id="@+id/player2_poison_add"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_up_overlay" />
+                    android:background="@drawable/ic_arrow_up_background" />
 
                 <View
                     android:id="@+id/player2_poison_remove"
-                    style="@style/PlayerLifeButton"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/ic_arrow_white_down_overlay" />
+                    android:background="@drawable/ic_arrow_down_background" />
 
             </LinearLayout>
 

@@ -6,7 +6,7 @@
     <color name="background">#FF006837</color>
 
     <!-- MainActivity colors -->
-    <color name="main_divider">#B3FFFFFF</color>
+    <color name="main_divider">#4CFFFFFF</color>
 
     <!-- SettingsActivity colors -->
     <color name="settings_header_text_color">#FF999999</color>

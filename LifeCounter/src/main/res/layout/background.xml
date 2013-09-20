@@ -22,6 +22,6 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingBottom="16dp"
-        android:numColumns="2" />
+        android:numColumns="@integer/background_grid_view_num_columns" />
 
 </FrameLayout>
