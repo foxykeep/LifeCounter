@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="background_1_color">#FF000000</color>
-    <color name="background_1_color2">#FFC94A12</color>
+    <color name="background_1_color">#FFD23519</color>
 
-    <color name="background_2_color">#FF0E723B</color>
+    <color name="background_2_color">#FF1A1A1A</color>
 
-    <color name="background_3_color">#FFEC4C51</color>
-    <color name="background_3_color2">#FF39A569</color>
+    <color name="background_3_color">#FF0D3A71</color>
 
-    <color name="background_4_color">#FF000000</color>
-    <color name="background_4_color2">#FF36A9D8</color>
+    <color name="background_4_color">#FF0E723B</color>
 
-    <color name="background_5_color">#FFD23519</color>
+    <color name="background_5_color">#FF000000</color>
+    <color name="background_5_color2">#FFC94A12</color>
 
-    <color name="background_6_color">#FF1A1A1A</color>
+    <color name="background_6_color">#FFEC4C51</color>
+    <color name="background_6_color2">#FF39A569</color>
 
-    <color name="background_7_color">#FF0D3A71</color>
+    <color name="background_7_color">#FF000000</color>
+    <color name="background_7_color2">#FF36A9D8</color>
 
 </resources>

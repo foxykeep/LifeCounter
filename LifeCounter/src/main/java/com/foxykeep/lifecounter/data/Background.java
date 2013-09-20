@@ -56,26 +56,24 @@ public final class Background {
 
     public static ArrayList<Background> getBackgrounds() {
         if (BACKGROUND_LIST.isEmpty()) {
-            BACKGROUND_LIST.add(Background.newColor(1 /* id */, R.color.background_5_color));
-            BACKGROUND_LIST.add(Background.newColor(2 /* id */, R.color.background_6_color));
-            BACKGROUND_LIST.add(Background.newColor(3 /* id */, R.color.background_7_color));
-            BACKGROUND_LIST.add(Background.newColor(4 /* id */, R.color.background_2_color));
-            BACKGROUND_LIST.add(Background.newGradient(5 /* id */, R.color.background_1_color,
-                    R.color.background_1_color2));
-            BACKGROUND_LIST.add(Background.newGradient(6 /* id */, R.color.background_3_color,
-                    R.color.background_3_color2));
-            BACKGROUND_LIST.add(Background.newGradient(7 /* id */, R.color.background_4_color,
-                    R.color.background_4_color2));
+            BACKGROUND_LIST.add(Background.newColor(1 /* id */, R.color.background_1_color));
+            BACKGROUND_LIST.add(Background.newColor(2 /* id */, R.color.background_2_color));
+            BACKGROUND_LIST.add(Background.newColor(3 /* id */, R.color.background_3_color));
+            BACKGROUND_LIST.add(Background.newColor(4 /* id */, R.color.background_4_color));
+            BACKGROUND_LIST.add(Background.newGradient(5 /* id */, R.color.background_5_color,
+                    R.color.background_5_color2));
+            BACKGROUND_LIST.add(Background.newGradient(6 /* id */, R.color.background_6_color,
+                    R.color.background_6_color2));
+            BACKGROUND_LIST.add(Background.newGradient(7 /* id */, R.color.background_7_color,
+                    R.color.background_7_color2));
             BACKGROUND_LIST.add(Background.newDrawable(8 /* id */, R.drawable.bg_fox,
-                    R.drawable.bg_fox));
+                    R.drawable.thumb_fox));
             BACKGROUND_LIST.add(Background.newDrawable(9 /* id */, R.drawable.bg_red_hell,
-                    R.drawable.bg_red_hell));
+                    R.drawable.thumb_red_hell));
             BACKGROUND_LIST.add(Background.newDrawable(10 /* id */, R.drawable.bg_wood,
-                    R.drawable.bg_wood));
-            BACKGROUND_LIST.add(Background.newDrawable(11 /* id */, R.drawable.wood_1280,
-                    R.drawable.wood_1280));
-            BACKGROUND_LIST.add(Background.newDrawable(12 /* id */, R.drawable.wood_2000,
-                    R.drawable.wood_2000));
+                    R.drawable.thumb_wood));
+            BACKGROUND_LIST.add(Background.newDrawable(11 /* id */, R.drawable.bg_black_head,
+                    R.drawable.thumb_black_head));
         }
 
         return BACKGROUND_LIST;
