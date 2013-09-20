@@ -1,6 +1,7 @@
 package com.foxykeep.lifecounter;
 
 import com.foxykeep.lifecounter.data.Background;
+import com.foxykeep.lifecounter.gesture.GestureDetector;
 import com.foxykeep.lifecounter.sharedprefs.SharedPrefsConfig;
 
 import android.app.Activity;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -22,6 +24,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final String SAVED_STATE_PLAYER_2_LIFE = "savedStatePlayer2Life";
     private static final String SAVED_STATE_PLAYER_2_POISON = "savedStatePlayer2Poison";
 
+    // Background view
     private ImageView mBackgroundView;
 
     // Player 1 views
@@ -49,6 +52,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private int mPlayer1Poison;
     private int mPlayer2Life;
     private int mPlayer2Poison;
+
+    // GestureDetector
+    private GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +138,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer2PoisonRemoveView.setOnClickListener(this);
         mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
         mPlayer2PoisonIconView = (ImageView) findViewById(R.id.player2_poison_icon);
+
+        mGestureDetector = new GestureDetector(this, findViewById(R.id.root_container));
     }
 
     private void populateViews() {
@@ -208,6 +216,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mGestureDetector.onTouchEvent(ev);
+
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.player1_life_add:
@@ -265,6 +280,34 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.player2_poison_remove:
                 mPlayer2Poison--;
                 break;
+        }
+
+        populateViews();
+    }
+
+    public void onGestureDetected(int playerImpacted, int gestureType) {
+        if (playerImpacted == GestureDetector.GESTURE_ON_PLAYER_1_VIEWS) {
+            // Player 1 views
+            if (gestureType == GestureDetector.GESTURE_DECREMENT) {
+                if (mFlipCounter) {
+                    mPlayer1Life += 5;
+                } else {
+                    mPlayer1Life -= 5;
+                }
+            } else {
+                if (mFlipCounter) {
+                    mPlayer1Life -= 5;
+                } else {
+                    mPlayer1Life += 5;
+                }
+            }
+        } else {
+            // Player 2 views
+            if (gestureType == GestureDetector.GESTURE_DECREMENT) {
+                mPlayer2Life -= 5;
+            } else {
+                mPlayer2Life += 5;
+            }
         }
 
         populateViews();
