@@ -155,19 +155,23 @@ public final class GestureDetector implements ViewTreeObserver.OnGlobalLayoutLis
     public void onGlobalLayout() {
         int[] location = new int[2];
 
-        View player1Container = mRootView.findViewById(R.id.player1_life_container);
+        View player1LifeContainer = mRootView.findViewById(R.id.player1_life_container);
+        View player1PoisonContainer = mRootView.findViewById(R.id.player1_poison_container);
 
-        player1Container.getLocationOnScreen(location);
+        player1LifeContainer.getLocationOnScreen(location);
         mRectFPlayer1.left = location[0];
-        mRectFPlayer1.right = location[0] + player1Container.getWidth();
+        mRectFPlayer1.right = location[0] + player1LifeContainer.getWidth()
+                + player1PoisonContainer.getWidth();
         mRectFPlayer1.top = location[1];
-        mRectFPlayer1.bottom = location[1] + player1Container.getHeight();
+        mRectFPlayer1.bottom = location[1] + player1LifeContainer.getHeight();
 
         View player2Container = mRootView.findViewById(R.id.player2_life_container);
+        View player2PoisonContainer = mRootView.findViewById(R.id.player2_poison_container);
 
         player2Container.getLocationOnScreen(location);
         mRectFPlayer2.left = location[0];
-        mRectFPlayer2.right = location[0] + player2Container.getWidth();
+        mRectFPlayer2.right = location[0] + player2Container.getWidth()
+                + player2PoisonContainer.getWidth();
         mRectFPlayer2.top = location[1];
         mRectFPlayer2.bottom = location[1] + player2Container.getHeight();
 
