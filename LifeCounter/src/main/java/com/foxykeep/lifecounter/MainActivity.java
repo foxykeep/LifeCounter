@@ -39,7 +39,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private View mPlayer1PoisonAddView;
     private View mPlayer1PoisonRemoveView;
     private TextView mPlayer1PoisonView;
-    private ImageView mPlayer1PoisonIconView;
 
     // Player 2 views
     private TextView mPlayer2LifeView;
@@ -48,7 +47,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private View mPlayer2PoisonContainer;
     private View mPlayer2PoisonRemoveView;
     private TextView mPlayer2PoisonView;
-    private ImageView mPlayer2PoisonIconView;
 
     // Settings
     private boolean mFlipCounter;
@@ -134,7 +132,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer1PoisonRemoveView = findViewById(R.id.player1_poison_remove);
         mPlayer1PoisonRemoveView.setOnClickListener(this);
         mPlayer1PoisonView = (TextView) findViewById(R.id.player1_poison);
-        mPlayer1PoisonIconView = (ImageView) findViewById(R.id.player1_poison_icon);
 
         // Reset view
         findViewById(R.id.reset).setOnClickListener(this);
@@ -151,7 +148,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer2PoisonRemoveView = findViewById(R.id.player2_poison_remove);
         mPlayer2PoisonRemoveView.setOnClickListener(this);
         mPlayer2PoisonView = (TextView) findViewById(R.id.player2_poison);
-        mPlayer2PoisonIconView = (ImageView) findViewById(R.id.player2_poison_icon);
 
         mGestureDetector = new GestureDetector(this, findViewById(R.id.root_container));
     }
@@ -167,8 +163,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mPlayer1PoisonContainer.setVisibility(View.VISIBLE);
             mPlayer1PoisonView.setVisibility(View.VISIBLE);
             mPlayer1PoisonView.setText(String.valueOf(mPlayer1Poison));
-            mPlayer1PoisonIconView.setImageResource(mPlayer1Poison > 0
-                    ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled);
+            int poisonIconResId = mPlayer1Poison > 0
+                    ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled;
+            mPlayer1PoisonView.setCompoundDrawablesWithIntrinsicBounds(0 /* left */, 0 /* top */,
+                    poisonIconResId /* right*/, 0 /* bottom */);
 
             if (mFlipCounter) {
                 mPlayer1PoisonView.setRotation(180f);
@@ -203,8 +201,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             mPlayer2PoisonContainer.setVisibility(View.VISIBLE);
             mPlayer2PoisonView.setVisibility(View.VISIBLE);
             mPlayer2PoisonView.setText(String.valueOf(mPlayer2Poison));
-            mPlayer2PoisonIconView.setImageResource(mPlayer2Poison > 0
-                    ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled);
+            poisonIconResId = mPlayer2Poison > 0
+                    ? R.drawable.ic_poison_normal : R.drawable.ic_poison_disabled;
+            mPlayer2PoisonView.setCompoundDrawablesWithIntrinsicBounds(0 /* left */, 0 /* top */,
+                    poisonIconResId /* right*/, 0 /* bottom */);
 
             if (mPlayer2Poison == 0) {
                 mPlayer2PoisonRemoveView.setVisibility(View.INVISIBLE);
@@ -229,6 +229,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mPlayer2Poison = 0;
     }
 
+    @SuppressWarnings("NullableProblems")
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         mGestureDetector.onTouchEvent(ev);
@@ -336,6 +337,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         populateViews();
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void showAndAnimateIncrementView(final View incrementView, int animResId) {
         incrementView.setVisibility(View.VISIBLE);
 
