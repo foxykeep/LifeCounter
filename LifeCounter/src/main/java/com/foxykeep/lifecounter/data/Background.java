@@ -63,6 +63,8 @@ public final class Background {
             BACKGROUND_LIST.add(Background.newGradient(7 /* id */, R.color.background_4_color,
                     R.color.background_4_color2));
             BACKGROUND_LIST.add(Background.newDrawable(8 /* id */, R.drawable.bg_fox));
+            BACKGROUND_LIST.add(Background.newDrawable(9 /* id */, R.drawable.bg_red_hell));
+            BACKGROUND_LIST.add(Background.newDrawable(10 /* id */, R.drawable.bg_wood));
         }
 
         return BACKGROUND_LIST;
