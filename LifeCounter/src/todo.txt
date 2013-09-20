@@ -1,5 +1,0 @@
-- Add an actionbar button to hide the gridview
-(android developer icon => contrast or show)
-- Add gesture to add/remove life
-- Add sounds
-- Add more backgrounds
