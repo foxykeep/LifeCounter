@@ -1,0 +1,12 @@
+Listing
+    - Title
+    - Description
+    - Promo text
+    - Send for translation to Marie
+
+Screenshots
+    - N4
+    - N7
+    - Need to clean them
+
+Translate strings in french
