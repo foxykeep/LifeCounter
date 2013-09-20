@@ -25,29 +25,33 @@ public final class Background {
     public final int id;
     public final int type;
     public final int drawableResId;
+    public final int thumbnailDrawableResId;
     public final int colorResId;
     public final int color2ResId;
 
-    private Background(int id, int type, int drawableResId, int colorResId, int color2ResId) {
+    private Background(int id, int type, int drawableResId, int thumbnailDrawableResId,
+            int colorResId, int color2ResId) {
         this.id = id;
         this.type = type;
         this.drawableResId = drawableResId;
+        this.thumbnailDrawableResId = thumbnailDrawableResId;
         this.colorResId = colorResId;
         this.color2ResId = color2ResId;
     }
 
     private static Background newColor(int id, int colorResId) {
-        return new Background(id, TYPE_COLOR, 0 /* drawableResId */, colorResId,
-                0 /* color2ResId */);
+        return new Background(id, TYPE_COLOR, 0 /* drawableResId */,
+                0 /* thumbnailDrawableResId */, colorResId, 0 /* color2ResId */);
     }
 
     private static Background newGradient(int id, int colorResId, int color2ResId) {
-        return new Background(id, TYPE_GRADIENT, 0 /* drawableResId */, colorResId, color2ResId);
+        return new Background(id, TYPE_GRADIENT, 0 /* drawableResId */,
+                0 /* thumbnailDrawableResId */, colorResId, color2ResId);
     }
 
-    private static Background newDrawable(int id, int drawableResId) {
-        return new Background(id, TYPE_DRAWABLE, drawableResId, 0 /* colorResId */,
-                0 /* color2ResId */);
+    private static Background newDrawable(int id, int drawableResId, int thumbnailDrawableResId) {
+        return new Background(id, TYPE_DRAWABLE, drawableResId, thumbnailDrawableResId,
+                0 /* colorResId */, 0 /* color2ResId */);
     }
 
     public static ArrayList<Background> getBackgrounds() {
@@ -62,11 +66,16 @@ public final class Background {
                     R.color.background_3_color2));
             BACKGROUND_LIST.add(Background.newGradient(7 /* id */, R.color.background_4_color,
                     R.color.background_4_color2));
-            BACKGROUND_LIST.add(Background.newDrawable(8 /* id */, R.drawable.bg_fox));
-            BACKGROUND_LIST.add(Background.newDrawable(9 /* id */, R.drawable.bg_red_hell));
-            BACKGROUND_LIST.add(Background.newDrawable(10 /* id */, R.drawable.bg_wood));
-            BACKGROUND_LIST.add(Background.newDrawable(11 /* id */, R.drawable.wood_1280));
-            BACKGROUND_LIST.add(Background.newDrawable(12 /* id */, R.drawable.wood_2000));
+            BACKGROUND_LIST.add(Background.newDrawable(8 /* id */, R.drawable.bg_fox,
+                    R.drawable.bg_fox));
+            BACKGROUND_LIST.add(Background.newDrawable(9 /* id */, R.drawable.bg_red_hell,
+                    R.drawable.bg_red_hell));
+            BACKGROUND_LIST.add(Background.newDrawable(10 /* id */, R.drawable.bg_wood,
+                    R.drawable.bg_wood));
+            BACKGROUND_LIST.add(Background.newDrawable(11 /* id */, R.drawable.wood_1280,
+                    R.drawable.wood_1280));
+            BACKGROUND_LIST.add(Background.newDrawable(12 /* id */, R.drawable.wood_2000,
+                    R.drawable.wood_2000));
         }
 
         return BACKGROUND_LIST;
@@ -88,6 +97,15 @@ public final class Background {
 
             default:
                 throw new IllegalArgumentException("Illegal type: " + type);
+        }
+    }
+
+    public Drawable getThumbnail(Context context) {
+        if (type == TYPE_DRAWABLE) {
+            Resources res = context.getResources();
+            return res.getDrawable(thumbnailDrawableResId);
+        } else {
+            return getDrawable(context);
         }
     }
 

@@ -77,7 +77,7 @@ public class BackgroundActivity extends Activity implements AdapterView.OnItemCl
         }
 
         public void populateViews(Context context, Background background) {
-            mImageView.setImageDrawable(background.getDrawable(context));
+            mImageView.setImageDrawable(background.getThumbnail(context));
         }
     }
 
