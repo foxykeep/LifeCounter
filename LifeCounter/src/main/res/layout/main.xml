@@ -67,8 +67,26 @@
                 <TextView
                     android:id="@+id/player1_life"
                     style="@style/PlayerLifeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/player1_life_increment"
+                    style="@style/PlayerLifeIncrementText.Increment"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/player1_life_decrement"
+                    style="@style/PlayerLifeIncrementText.Decrement"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/player1_life_increment_flipped"
+                    style="@style/PlayerLifeIncrementText.Increment.Flipped"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/player1_life_decrement_flipped"
+                    style="@style/PlayerLifeIncrementText.Decrement.Flipped"
                     android:fontFamily="sans-serif-light" />
 
             </FrameLayout>
@@ -192,9 +210,17 @@
                 <TextView
                     android:id="@+id/player2_life"
                     style="@style/PlayerLifeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:fontFamily="sans-serif-light"  />
+
+                <TextView
+                    android:id="@+id/player2_life_increment"
+                    style="@style/PlayerLifeIncrementText.Increment"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/player2_life_decrement"
+                    style="@style/PlayerLifeIncrementText.Decrement"
+                    android:fontFamily="sans-serif-light" />
 
             </FrameLayout>
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animation used to show the increment value when using the corresponding gesture. -->
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <alpha
+        android:interpolator="@android:interpolator/accelerate_quint"
+        android:duration="@integer/animation_duration"
+        android:fromAlpha="1"
+        android:toAlpha="0" />
+
+    <translate
+        android:interpolator="@android:interpolator/accelerate_quint"
+        android:duration="@integer/animation_duration"
+        android:fromXDelta="0"
+        android:fromYDelta="0"
+        android:toXDelta="-15"
+        android:toYDelta="30" />
+
+</set>

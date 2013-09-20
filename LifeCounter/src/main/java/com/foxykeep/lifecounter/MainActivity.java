@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +31,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     // Player 1 views
     private TextView mPlayer1LifeView;
+    private View mPlayer1LifeIncrementView;
+    private View mPlayer1LifeDecrementView;
+    private View mPlayer1LifeIncrementFlippedView;
+    private View mPlayer1LifeDecrementFlippedView;
     private View mPlayer1PoisonContainer;
     private View mPlayer1PoisonAddView;
     private View mPlayer1PoisonRemoveView;
@@ -37,6 +43,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     // Player 2 views
     private TextView mPlayer2LifeView;
+    private View mPlayer2LifeIncrementView;
+    private View mPlayer2LifeDecrementView;
     private View mPlayer2PoisonContainer;
     private View mPlayer2PoisonRemoveView;
     private TextView mPlayer2PoisonView;
@@ -115,6 +123,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.player1_life_add).setOnClickListener(this);
         findViewById(R.id.player1_life_remove).setOnClickListener(this);
         mPlayer1LifeView = (TextView) findViewById(R.id.player1_life);
+        mPlayer1LifeIncrementView = findViewById(R.id.player1_life_increment);
+        mPlayer1LifeDecrementView = findViewById(R.id.player1_life_decrement);
+        mPlayer1LifeIncrementFlippedView = findViewById(R.id.player1_life_increment_flipped);
+        mPlayer1LifeDecrementFlippedView = findViewById(R.id.player1_life_decrement_flipped);
 
         mPlayer1PoisonContainer = findViewById(R.id.player1_poison_container);
         mPlayer1PoisonAddView = findViewById(R.id.player1_poison_add);
@@ -131,6 +143,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.player2_life_add).setOnClickListener(this);
         findViewById(R.id.player2_life_remove).setOnClickListener(this);
         mPlayer2LifeView = (TextView) findViewById(R.id.player2_life);
+        mPlayer2LifeIncrementView = findViewById(R.id.player2_life_increment);
+        mPlayer2LifeDecrementView = findViewById(R.id.player2_life_decrement);
 
         mPlayer2PoisonContainer = findViewById(R.id.player2_poison_container);
         findViewById(R.id.player2_poison_add).setOnClickListener(this);
@@ -285,32 +299,61 @@ public class MainActivity extends Activity implements View.OnClickListener {
         populateViews();
     }
 
+    @SuppressWarnings("ConstantConditions")
     public void onGestureDetected(int playerImpacted, int gestureType) {
         if (playerImpacted == GestureDetector.GESTURE_ON_PLAYER_1_VIEWS) {
             // Player 1 views
             if (gestureType == GestureDetector.GESTURE_DECREMENT) {
                 if (mFlipCounter) {
                     mPlayer1Life += 5;
+                    showAndAnimateIncrementView(mPlayer1LifeIncrementFlippedView,
+                            R.anim.increment_flipped);
                 } else {
                     mPlayer1Life -= 5;
+                    showAndAnimateIncrementView(mPlayer1LifeDecrementView, R.anim.decrement);
                 }
             } else {
                 if (mFlipCounter) {
                     mPlayer1Life -= 5;
+                    showAndAnimateIncrementView(mPlayer1LifeDecrementFlippedView,
+                            R.anim.decrement_flipped);
                 } else {
                     mPlayer1Life += 5;
+                    showAndAnimateIncrementView(mPlayer1LifeIncrementView, R.anim.increment);
                 }
             }
         } else {
             // Player 2 views
             if (gestureType == GestureDetector.GESTURE_DECREMENT) {
                 mPlayer2Life -= 5;
+                showAndAnimateIncrementView(mPlayer2LifeDecrementView, R.anim.decrement);
             } else {
                 mPlayer2Life += 5;
+                showAndAnimateIncrementView(mPlayer2LifeIncrementView, R.anim.increment);
             }
         }
 
         populateViews();
+    }
+
+    private void showAndAnimateIncrementView(final View incrementView, int animResId) {
+        incrementView.setVisibility(View.VISIBLE);
+
+        Animation animation = AnimationUtils.loadAnimation(this, animResId);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                incrementView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+
+        incrementView.startAnimation(animation);
     }
 
     @Override

@@ -8,6 +8,8 @@
 
     <string name="main_title">COUNT</string>
     <string name="main_action_settings">Settings</string>
+    <string name="main_decrement">-5</string>
+    <string name="main_increment">+5</string>
     <string name="main_reset_dialog_title">Confirmation</string>
     <string name="main_reset_dialog_message">Do you want to reset the life totals ?</string>
 
