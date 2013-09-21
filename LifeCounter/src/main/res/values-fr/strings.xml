@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Life Counter</string>
+
+    <!-- MainActivity texts -->
+    <eat-comment />
+
+    <string name="main_title">COUNT</string>
+    <string name="main_action_settings">Préférences</string>
+    <string name="main_decrement">-5</string>
+    <string name="main_increment">+5</string>
+    <string name="main_reset_dialog_title">Confirmation</string>
+    <string name="main_reset_dialog_message">Voulez-vous réinitialiser les points de vie ?</string>
+
+    <!-- SettingsActivity texts -->
+    <eat-comment />
+
+    <string name="settings_title">Préférences</string>
+    <string name="settings_header_background">FOND D\'ÉCRAN</string>
+    <string name="settings_item_background_color">Choisir le fond d\'écran</string>
+    <string name="settings_header_points">POINTS</string>
+    <string name="settings_item_flip_counter">Retourner le compteur</string>
+    <string name="settings_item_poison_counters">Montrer les compteurs de poison</string>
+    <string name="settings_item_starting_life_format">Points de vie de départ: %1$d</string>
+    <string name="settings_header_other">AUTRE</string>
+    <string name="settings_item_keep_screen_awake">Garder l\'écran allumé</string>
+    <string name="settings_header_about">À PROPOS</string>
+    <string name="settings_item_credits">Crédits</string>
+
+    <!-- NumberPicker dialog -->
+    <eat-comment />
+
+    <string name="number_picker_dialog_title">Points de vie de départ</string>
+    <string name="number_picker_dialog_button_set">OK</string>
+
+    <!-- Credits dialog -->
+    <eat-comment />
+
+    <string name="credits_dialog_title">Crédits</string>
+    <string name="credits_dialog_development_header">Développement</string>
+    <string name="credits_dialog_development_item">Nicolas Klein (foxykeep.com)</string>
+    <string name="credits_dialog_design_header">Design</string>
+    <string name="credits_dialog_design_item">Marie Schweiz (marie-schweiz.de)</string>
+    <string name="credits_dialog_button_close">Fermer</string>
+
+    <!-- BackgroundActivity texts -->
+    <eat-comment />
+
+    <string name="background_title">Choisir le fond d\'écran</string>
+
+</resources>
