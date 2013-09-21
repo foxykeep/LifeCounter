@@ -48,8 +48,8 @@
     </style>
 
     <style name="PlayerLifeIncrementText.Increment">
-        <item name="android:paddingLeft">130dp</item>
-        <item name="android:paddingBottom">90dp</item>
+        <item name="android:paddingLeft">@dimen/main_player_life_increment_padding_horizontal</item>
+        <item name="android:paddingBottom">@dimen/main_player_life_increment_padding_vertical</item>
         <item name="android:text">@string/main_increment</item>
     </style>
 
@@ -58,8 +58,8 @@
     </style>
 
     <style name="PlayerLifeIncrementText.Decrement">
-        <item name="android:paddingLeft">130dp</item>
-        <item name="android:paddingTop">90dp</item>
+        <item name="android:paddingLeft">@dimen/main_player_life_increment_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/main_player_life_increment_padding_vertical</item>
         <item name="android:text">@string/main_decrement</item>
     </style>
 

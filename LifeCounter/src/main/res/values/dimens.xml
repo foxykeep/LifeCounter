@@ -4,6 +4,8 @@
     <!-- MainActivity dimens -->
     <dimen name="main_player_life_text_size">90sp</dimen>
     <dimen name="main_player_life_increment_text_size">30sp</dimen>
+    <dimen name="main_player_life_increment_padding_horizontal">130dp</dimen>
+    <dimen name="main_player_life_increment_padding_vertical">90dp</dimen>
     <dimen name="main_player_poison_text_size">50sp</dimen>
 
     <!-- SettingsActivity dimens -->
