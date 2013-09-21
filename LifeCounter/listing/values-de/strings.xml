@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- [CHARLIMIT=30] -->
+    <string name="title">Life Counter</string>
+    <!-- [CHARLIMIT=4000] -->
+    <string name="description">
+        Life Counter is a simple and easy way to manage your life during a Magic The Gathering
+        match (or similar games) using your Android phone or tablet.
+
+        Features:
+        - Life and poison counters
+        - Possibility to set your starting life
+        - Multiple beautifully designed backgrounds
+        - And more to come...
+
+        Designs by Marie Schweiz (http://marie-schweiz.de)
+        Development by Nicolas Klein (http://foxykeep.com)
+        Code open source at http://github.com/foxykeep/lifecounter
+    </string>
+    <!-- [CHARLIMIT=80] -->
+    <string name="promo_text">A simple and easy way to manage your life for Magic The
+        Gathering</string>
+    <!-- [CHARLIMIT=500] -->
+    <string name="recent_changes">First release</string>
+
+</resources>

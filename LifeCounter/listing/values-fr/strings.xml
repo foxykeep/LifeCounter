@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- [CHARLIMIT=30] -->
+    <string name="title">Life Counter</string>
+    <!-- [CHARLIMIT=4000] -->
+    <string name="description">
+        Life Counter est une façon simple et facile de gérer vos points de vie en utilisant votre
+        téléphone ou tablette Android quand vous jouez à Magic The Gathering (et autres jeux
+        similaires)
+
+        Fonctionnalités:
+        - Compteurs de vie et de poison
+        - Swiper vers la gauche/droite pour ajouter/retirer 5 points de vie d'un coup
+        - Possibilité de choisir votre vie de départ
+        - De nombreux fonds d'écrans superbement designés
+        - Et plus à venir...
+
+        Designs par Marie Schweiz (http://marie-schweiz.de)
+        Développement par Nicolas Klein (http://foxykeep.com)
+        Code disponible en open source à http://github.com/foxykeep/lifecounter
+    </string>
+    <!-- [CHARLIMIT=80] -->
+    <string name="promo_text">Une façon simple et facile de gérer vos points de vie pour Magic The
+        Gathering</string>
+    <!-- [CHARLIMIT=500] -->
+    <string name="recent_changes">Première version</string>
+
+</resources>
