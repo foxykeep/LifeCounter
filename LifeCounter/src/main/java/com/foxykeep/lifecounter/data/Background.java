@@ -113,7 +113,8 @@ public final class Background {
         Context context = imageView.getContext();
         Background currentBackground = null;
 
-        int backgroundId = SharedPrefsConfig.getInt(context, SharedPrefsConfig.BACKGROUND_ID, 1);
+        int backgroundId = SharedPrefsConfig.getInt(context, SharedPrefsConfig.BACKGROUND_ID,
+                getDefaultBackgroundId());
         ArrayList<Background> backgroundList = Background.getBackgrounds();
         for (int i = 0, size = backgroundList.size(); i < size; i++) {
             Background background = backgroundList.get(i);
@@ -126,6 +127,9 @@ public final class Background {
         if (currentBackground != null) {
             imageView.setImageDrawable(currentBackground.getDrawable(context));
         }
+    }
 
+    private static int getDefaultBackgroundId() {
+        return 7; // The blue/black gradient
     }
 }
