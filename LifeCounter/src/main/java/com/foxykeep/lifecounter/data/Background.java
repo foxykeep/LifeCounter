@@ -74,6 +74,8 @@ public final class Background {
                     R.drawable.thumb_wood));
             BACKGROUND_LIST.add(Background.newDrawable(11 /* id */, R.drawable.bg_black_head,
                     R.drawable.thumb_black_head));
+            BACKGROUND_LIST.add(Background.newDrawable(12 /* id */, R.drawable.bg_sea,
+                    R.drawable.thumb_sea));
         }
 
         return BACKGROUND_LIST;
