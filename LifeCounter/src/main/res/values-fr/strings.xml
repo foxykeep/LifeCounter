@@ -6,7 +6,6 @@
     <!-- MainActivity texts -->
     <eat-comment />
 
-    <string name="main_title">COUNT</string>
     <string name="main_action_settings">Préférences</string>
     <string name="main_decrement">-5</string>
     <string name="main_increment">+5</string>

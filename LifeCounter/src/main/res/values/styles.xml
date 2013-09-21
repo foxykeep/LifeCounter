@@ -21,12 +21,6 @@
 
     <style name="ActionBarTransparent.Main">
         <item name="android:displayOptions">none|showTitle</item>
-        <item name="android:titleTextStyle">@style/ActionBarTransparent.Title.Main</item>
-    </style>
-
-    <style name="ActionBarTransparent.Title.Main">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="PlayerLifeText" parent="android:Widget.TextView">
